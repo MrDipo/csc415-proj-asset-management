@@ -1,6 +1,6 @@
 ﻿# Asset Management System
 School project; A sample webapp for employees to requests assets from HR.
-Please see *requirements.txt for some project scope being considered
+Please see *requirements.txt* for some project scope being considered
 
 # Collaboration rules
 1. clone this repository locally. <br />
