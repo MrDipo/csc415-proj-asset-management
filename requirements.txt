@@ -12,3 +12,14 @@ The manager's dashboard should
 2. Allow the manager to approve or decline requests.
 
 In addition to the dashboards the web application should have pages for managing office items and their assignments.
+
+Pages:
+1. Login Page (Employee, HR, Manager)
+2. Employee Dashboard -> View Requests made, Make Request(form), View Assets Assigned
+3. HR Dashboard -> View All Requests, Create Employee, View Employee, Update Employee, Delete Employee
+4. Manager Dashboard -> View All Requests + Approve/Decline buttons
+
+Database tables:
+1. employees ()
+2. assests ()
+3. requests ()
