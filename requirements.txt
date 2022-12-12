@@ -1,0 +1,14 @@
+The dashboard for employees should allow them to,
+1. Make requests for office items
+2. View all assets that have been assigned to them.
+3. Show requests they've made
+
+The HR unit's dashboard should, 
+1. Show all requests made by employees
+2. Allow them to manage employees(create new employee, view all employees, update employee details, delete employee)
+
+The manager's dashboard should
+1. Show the statuses of all requests
+2. Allow the manager to approve or decline requests.
+
+In addition to the dashboards the web application should have pages for managing office items and their assignments.
