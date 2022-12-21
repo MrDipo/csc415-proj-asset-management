@@ -4,7 +4,7 @@ Please see *requirements.txt* for some project scope being considered
 
 # Collaboration rules
 1. clone this repository locally. <br />
-	`git clone https://github.com/MrDipo/csc415-project.git`
+	`git clone https://github.com/MrDipo/csc415-proj-asset-management.git`
 2. create a branch for yourself <br />
 	`git checkout -b <yourname>` <br />
 	e.g  <br />
