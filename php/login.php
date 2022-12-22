@@ -8,7 +8,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $password = mysqli_real_escape_string($conn, $password);
     $query = "SELECT * FROM employee WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $query);
-    mysqli_close($conn);
 
     if(mysqli_num_rows($result) == 1){
         echo 'You have successfully logged-in';
@@ -23,7 +22,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit();
     }
 } else {
-# header('location: ../index.html');
 echo 'login failed';
 exit();
 }

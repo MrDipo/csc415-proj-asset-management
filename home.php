@@ -1,5 +1,5 @@
 <?php
-require "phplogin/check_login.php";
+require "php/check_login.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +11,6 @@ require "phplogin/check_login.php";
 </head>
 <body>
     <h1>Hallelujah</h1>
-    <a href="phplogin/logout.php">Log out</a>
+    <a href="php/logout.php">Log out</a>
 </body>
 </html>
