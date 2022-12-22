@@ -19,7 +19,7 @@ function create_employee($department_id, $name, $address, $phone, $email, $passw
     $result = mysqli_query($conn, $query);
     return $result;
 }
-
+# checks if 
 function update_employee($employee_id, $department_id, $name, $address, $phone, $email, $password, $role, $employment_type, $conn){
     $query = "UPDATE employee
     SET department_id = CASE 
