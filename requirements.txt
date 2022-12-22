@@ -1,11 +1,11 @@
 The dashboard for employees should allow them to,
-1. Make requests for office items*
+1. Make requests for office items (done)
 2. View all assets that have been assigned to them.(done)
 3. Show requests they've made (done)
 
 The HR unit's dashboard should, 
 1. Show all requests made by employees (done)
-2. Allow them to manage employees(create new employee, view all employees, update employee details, delete employee)
+2. Allow them to manage employees(create new employee, view all employees, update employee details, delete employee) (done except delete)
 
 The manager's dashboard should
 1. Show the statuses of all requests (done)
@@ -22,5 +22,6 @@ Pages:
 Database tables:
 1. Employee
 2. Assest
-3. Request
+3. Request (associative entity lowkey)
 4. Department
+5. Employee_Asset (associative entity)
