@@ -1,9 +1,22 @@
 <?php
 require "db_connect.php";
 
-# modify so it checks if request has been made previously and if it is available
-function create_request($employee_id, $asset_id, $conn){
-    $query = "INSERT INTO `request`(`employee_id`, `asset_id`) VALUES ('$employee_id','$asset_id')";
+# Returns true if request has not been previously inserted into the database
+function create_request($employee_id, $asset_name, $conn){
+    $check_query = "SELECT r.employee_id, r.asset_id
+    FROM request r
+    JOIN employee e ON r.employee_id = e.id
+    JOIN asset a ON r.asset_id = a.id
+    WHERE e.id = '$employee_id' AND a.name = '$asset_name';";
+    $check_query_result = mysqli_query($conn, $check_query);
+    if (mysqli_num_rows($check_query_result)==1){
+        return False;
+    }
+    $query = "INSERT INTO request (employee_id, asset_id)
+    SELECT e.id, a.id
+    FROM employee e
+    JOIN asset a ON a.name = '$asset_name'
+    WHERE e.id = '$employee_id';";
     $result = mysqli_query($conn, $query);
     return $result;
 }
