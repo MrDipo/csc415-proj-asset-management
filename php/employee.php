@@ -24,5 +24,4 @@ function view_assigned_assets($employee_id, $conn){
     $row = mysqli_fetch_assoc($result);
     return $row;
 }
-
 ?>
