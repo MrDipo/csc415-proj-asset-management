@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<?php
-  require "../php/check_login.php";
-  require "../php/manager.php";
-  require "../php/common_hr_manager.php";
 
-?>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/style2.css" />
+    <link rel="stylesheet" href="../styles//style2.css" />
     <!-- Boxiocns CDN Link -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -22,11 +16,11 @@
   </head>
   <body>
     <div class="sidebar close">
-      <!-- <div class="logo-details">
-        <i class="bx bxl-c-plus-plus"></i>
-        <span class="logo_name">CodingLab</span>
-      </div> -->
-
+      <!-- logo starts here -->
+      <div class="logo-details">
+        <img src="../assets/logo.png" alt="" class="pl-2" />
+      </div>
+      <!-- logo stops here -->
       <ul class="nav-links">
         <li>
           <div class="icon-link">
@@ -34,10 +28,6 @@
           </div>
         </li>
         <li>
-          <!-- <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="link_name">Dashboard</span>
-          </a> -->
           <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Dashboard</a></li>
           </ul>
@@ -51,10 +41,10 @@
             <i class="bx bxs-chevron-down arrow"></i>
           </div>
           <ul class="sub-menu">
-          <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.php">Employee</a></li>
-            <li><a href="./human_resources.php">Human Resource</a></li>
-            <li><a href="./manager.php">Manager</a></li>
+            <li><a class="link_name" href="#">Dashboard</a></li>
+            <li><a href="./employee.html">Employee</a></li>
+            <li><a href="./human_resources.html">Human Resource</a></li>
+            <li><a href="../index.html">Manager</a></li>
           </ul>
         </li>
 
@@ -85,7 +75,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="../php/logout.php"><i class="bx bx-log-out"></i></a>
+            <a href="#"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -96,56 +86,37 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">Manager</h1>
+            <h1 class="font-semibold text-3xl">Requests</h1>
             <i class="fas fa-user-cog"></i>
           </div>
 
           <section class="attendance">
             <div class="attendance-list">
-              <h1>Employee Requests</h1>
+              <!-- <h1>Request List</h1> -->
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Department</th>
+                    <th>Equipment</th>
                     <th>Date</th>
-                    <th>Asset</th>
                     <th>Request Status</th>
-                    <th>Accept</th>
-                    <th>Decline</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                $row = view_all_requests($conn);
-                while($rows=$row->fetch_assoc())
-                {
-                ?>
-                <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
-                  <td><?php echo $rows['employee_name'];?></td>
-                  <td><?php echo $rows['department_name'];?></td>
-                  <td><?php echo $rows['date_created'];?></td>
-                  <td><?php echo $rows['asset_name'];?></td>
-                  <td><?php echo $rows['status'];?></td>
-                  <td>
-                  <form method="POST">
-                    <input type="submit" name="accept" value="Accept">
-                  </form>
-                  </td>
-                  <td>
-                  <form method="POST">
-                  <input type="submit" name="reject" value="Reject">
-                  </form>
-                  </td>
-                  <!-- <td><button >Accept</button></td>
-                  <td><button onclick="<?php reject_request($rows['employee_id'], $rows['asset_id'], $conn)?>">Decline</button></td> -->
-                  </form>
-                </tr>
-                <?php
-                }
-                ?>
+                  <tr>
+                    <td>Laptop</td>
+                    <td>03-24-22</td>
+                    <td>Approved</td>
+                  </tr>
+                  <tr>
+                    <td>Monitor</td>
+                    <td>03-24-22</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr>
+                    <td>Printer</td>
+                    <td>03-24-22</td>
+                    <td>Declined</td>
+                  </tr>
                 </tbody>
               </table>
             </div>

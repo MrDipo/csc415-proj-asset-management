@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<?php
-  require "../php/check_login.php";
-  require "../php/employee.php";
-?>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles//style2.css" />
+    <link rel="stylesheet" href="../styles/style2.css" />
     <!-- Boxiocns CDN Link -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -19,6 +16,11 @@
   </head>
   <body>
     <div class="sidebar close">
+      <!-- logo starts here -->
+      <div class="logo-details">
+        <img src="../assets/logo.png" alt="" class="pl-2" />
+      </div>
+      <!-- logo stops here -->
       <ul class="nav-links">
         <li>
           <div class="icon-link">
@@ -26,6 +28,10 @@
           </div>
         </li>
         <li>
+          <!-- <a href="#">
+            <i class="bx bx-grid-alt"></i>
+            <span class="link_name">Dashboard</span>
+          </a> -->
           <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Dashboard</a></li>
           </ul>
@@ -39,9 +45,10 @@
             <i class="bx bxs-chevron-down arrow"></i>
           </div>
           <ul class="sub-menu">
-            <li><a href="./employee.php">Employee</a></li>
-            <li><a href="./human_resources.php">Human Resource</a></li>
-            <li><a href="./manager.php">Manager</a></li>
+            <li><a class="link_name" href="#">Dashboard</a></li>
+            <li><a href="./employee.html">Employee</a></li>
+            <li><a href="./human_resources.html">Human Resource</a></li>
+            <li><a href="./manager.html">Manager</a></li>
           </ul>
         </li>
 
@@ -72,7 +79,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="../php/logout.php"><i class="bx bx-log-out"></i></a>
+            <a href="#"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -83,44 +90,69 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">Requests</h1>
+            <h1 class="font-semibold text-3xl">Manager</h1>
             <i class="fas fa-user-cog"></i>
           </div>
 
           <section class="attendance">
             <div class="attendance-list">
-              <!-- <h1>Request List</h1> -->
+              <h1>Employee List</h1>
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Asset</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
                     <th>Date</th>
+                    <th>Equipment</th>
                     <th>Request Status</th>
+                    <th>Accept</th>
+                    <th>Decline</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                $user = $_SESSION['username'];
-                $query = "SELECT id FROM employee WHERE employee_name = ?;";
-                $stmt = $conn->prepare($query); 
-                $stmt->bind_param("s", $user);
-                $stmt->execute();
-                $required = $stmt->get_result();
-                $temp = $required->fetch_assoc();
-                $request_result = view_made_requests($temp['id'], $conn);
-                while($rows=$request_result->fetch_assoc())
-                {
-                ?>
-                <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
-                  <td><?php echo $rows['asset_name'];?></td>
-                  <td><?php echo $rows['date_created'];?></td>
-                  <td><?php echo $rows['status'];?></td>
-                </tr>
-                <?php
-                }
-                ?>
+                  <tr>
+                    <td>01</td>
+                    <td>Sam David</td>
+                    <td>Design</td>
+                    <td>03-24-22</td>
+                    <td>Laptop</td>
+                    <td>Approved</td>
+                    <div class="flex-col">
+                      <td><button>Accept</button></td>
+                      <td><button>Decline</button></td>
+                    </div>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>Balbina Kherr</td>
+                    <td>Coding</td>
+                    <td>03-24-22</td>
+                    <td>Monitor</td>
+                    <td>Pending</td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                  </tr>
+                  <tr>
+                    <td>03</td>
+                    <td>Badan John</td>
+                    <td>testing</td>
+                    <td>03-24-22</td>
+                    <td>Printer</td>
+                    <td>Declined</td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                  </tr>
+                  <tr>
+                    <td>04</td>
+                    <td>Sara David</td>
+                    <td>Design</td>
+                    <td>03-24-22</td>
+                    <td>Printer</td>
+                    <td>Approved</td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                  </tr>
                 </tbody>
               </table>
             </div>

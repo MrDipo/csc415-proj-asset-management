@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<?php
-  require "../php/check_login.php";
-  require "../php/manager.php";
-  require "../php/common_hr_manager.php";
-?>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="../styles//style2.css" />
     <link rel="stylesheet" href="modal.css" />
+
     <!-- Boxiocns CDN Link -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -31,16 +28,24 @@
       />
 
       <div class="wrapper">
-        <h1 class="pb-6 font-light text-2xl">Add Employee</h1>
+        <h1 class="pb-6 font-light text-2xl">Create Request</h1>
 
         <form>
-          <input type="text" placeholder="Enter username" />
-          <input type="password" placeholder="Password" />
-          <input type="text" placeholder="Address" />
-          <input type="email" placeholder="Enter Email" />
-          <input type="text" placeholder="Enter Phone" />
-          <input type="text" placeholder="Enter Role" />
-          <input type="text" placeholder="Employment_type" />
+          <input
+            type="text"
+            placeholder="Enter Employee ID"
+            class="text-grey"
+          /><br />
+          <select
+            name=""
+            id="asset"
+            class="bg-[#dfe9f5] text-[grey] w-[85%] py-2 rounded-md pl-3"
+          >
+            <option value="input value">Input Asset</option>
+            <option value="dell 250">Dell 250</option>
+            <option value="Hp 250">hp 250</option>
+            <option value="microsoft 250">microsoft 250</option>
+          </select>
 
           <closeform></closeform>
         </form>
@@ -48,6 +53,11 @@
       </div>
     </div>
     <div class="sidebar close">
+      <!-- logo starts here -->
+      <div class="logo-details">
+        <img src="../assets/logo.png" alt="" class="pl-2" />
+      </div>
+      <!-- logo stops here -->
       <ul class="nav-links">
         <li>
           <div class="icon-link">
@@ -68,30 +78,30 @@
             <i class="bx bxs-chevron-down arrow"></i>
           </div>
           <ul class="sub-menu">
-          <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.php">Employee</a></li>
-            <li><a href="./human_resources.php">Human Resource</a></li>
-            <li><a href="./manager.php">Manager</a></li>
+            <li><a class="link_name" href="#">Dashboard</a></li>
+            <li><a href="./employee.html">Employee</a></li>
+            <li><a href="./human_resources.html">Human Resource</a></li>
+            <li><a href="./manager.html">Manager</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="#">
+          <a href="./inventory.html">
             <i class="bx bx-pie-chart-alt-2"></i>
             <span class="link_name">Inventory</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./inventory.html">Inventory</a></li>
+            <li><a class="link_name" href="#">Inventory</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="#">
+          <a href="./request.html">
             <i class="bx bx-compass"></i>
             <span class="link_name">Requests</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./request.html">Requests</a></li>
+            <li><a class="link_name" href="#">Requests</a></li>
           </ul>
         </li>
 
@@ -102,7 +112,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="../php/logout.php"><i class="bx bx-log-out"></i></a>
+            <a href="#"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -113,43 +123,67 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">Human Resources</h1>
+            <h1 class="font-semibold text-3xl">WELCOME, User</h1>
           </div>
-          <div class="right-0 w-1/4 mt-5">
-            <button class="add-employee" id="modal-btn">Add employee</button>
+          <div class="flex right-0 space-x-4 w-1/2">
+            <button class="add-employee" id="modal-btn">
+              <a href="#"> Create Request</a>
+            </button>
+            <button class="add-employee">
+              <a href="./request.html">View Request</a>
+            </button>
+            <button class="add-employee">
+              <a href="./inventory.html"> View Assets</a>
+            </button>
           </div>
 
           <section class="attendance">
             <div class="attendance-list">
-              <h1>Employee Requests</h1>
+              <h1>Employee List</h1>
               <table class="table">
                 <thead>
                   <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Department</th>
-                    <th>Date Created</th>
+                    <th>Date</th>
                     <th>Equipment</th>
                     <th>Request Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                $row = view_all_requests($conn);
-                while($rows=$row->fetch_assoc())
-                {
-                ?>
-                <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
-                  <td><?php echo $rows['employee_name'];?></td>
-                  <td><?php echo $rows['department_name'];?></td>
-                  <td><?php echo $rows['date_created'];?></td>
-                  <td><?php echo $rows['asset_name'];?></td>
-                  <td><?php echo $rows['status'];?></td>
-                </tr>
-                <?php
-                }
-                ?>
+                  <tr>
+                    <td>01</td>
+                    <td>Sam David</td>
+                    <td>Design</td>
+                    <td>03-24-22</td>
+                    <td>Laptop</td>
+                    <td>Approved</td>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>Balbina Kherr</td>
+                    <td>Coding</td>
+                    <td>03-24-22</td>
+                    <td>Monitor</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr>
+                    <td>03</td>
+                    <td>Badan John</td>
+                    <td>testing</td>
+                    <td>03-24-22</td>
+                    <td>Printer</td>
+                    <td>Declined</td>
+                  </tr>
+                  <tr>
+                    <td>04</td>
+                    <td>Sara David</td>
+                    <td>Design</td>
+                    <td>03-24-22</td>
+                    <td>Printer</td>
+                    <td>Approved</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -172,6 +206,6 @@
         sidebar.classList.toggle("close");
       });
     </script>
-    <script src="./modal.js"></script>
+    <script src="modal.js"></script>
   </body>
 </html>

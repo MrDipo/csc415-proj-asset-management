@@ -12,16 +12,34 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1 style="padding-bottom: 6px">Sign in</h1>
+      <!-- change starts here -->
+      <div
+        style="
+          display: flex;
+          justify-content: space-evenly;
+          padding-bottom: 8px;
+        "
+      >
+        <img
+          src="./assets/logo2.png"
+          alt=""
+          width="50"
+          height="50"
+          style="border-radius: 10px; padding-right: 5px"
+        />
+        <h1 style="padding-bottom: 6px; margin-right: 75px">Sign in</h1>
+      </div>
+      <!-- change ends here -->
 
-      <form method="POST" action="/php/login.php">
-        <input type="email" name="email" placeholder="Enter Email" />
-        <input type="password" name="password" placeholder="Password" />
+      <form>
+        <input type="email" placeholder="Enter Email" />
+        <input type="password" placeholder="Password" />
 
         <!-- <p class="recover">
           <a href="#">Recover Password</a>
         </p> -->
-        <input type="submit" name="submit" value="Sign in" />
+        <closeform></closeform>
+        <input type="submit" value="Sign in" />
       </form>
       <!-- <p class="or">----- or continue with -----</p>
       <div class="icons">
