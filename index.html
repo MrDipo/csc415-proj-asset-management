@@ -27,16 +27,15 @@
           height="50"
           style="border-radius: 10px; padding-right: 5px"
         />
-        <h1 style="padding-bottom: 6px; margin-right: 75px">Sign in</h1>
+        <h2 style="padding-bottom: 6px; margin-right: 35px">Employee Sign in</h2>
       </div>
       <!-- change ends here -->
 
-      <form>
-        <input type="email" placeholder="Enter Email" />
-        <input type="password" placeholder="Password" />
-
+      <form method="POST" action="php/employee_login.php">
+        <input type="text" name="email" placeholder="Enter Email" />
+        <input type="text" name="password" placeholder="Password" />
         <closeform></closeform>
-        <input type="submit" value="Sign in" />
+        <input type="submit" name="submit" value="Sign in" />
       </form>
     </div>
   </body>
