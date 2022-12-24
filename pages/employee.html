@@ -33,31 +33,33 @@
         <form>
           <input
             type="text"
+            name = "emp_id"
             placeholder="Enter Employee ID"
             class="text-grey"
           /><br />
           <select
-            name=""
+            name="select"
             id="asset"
             class="bg-[#dfe9f5] text-[grey] w-[85%] py-2 rounded-md pl-3"
           >
-            <option value="input value">Input Asset</option>
-            <option value="dell 250">Dell 250</option>
-            <option value="Hp 250">hp 250</option>
-            <option value="microsoft 250">microsoft 250</option>
-          </select>
-
+          <?php
+              $query = "SELECT asset_name FROM asset;";
+              $result = mysqli_query($conn, $query);
+              while($rows=$result->fetch_assoc())
+              {
+            ?>
+            <option value="<?php echo $rows['asset_name'];?>"><?php echo $rows['asset_name'];?></option>
+          <?php
+              }
+          ?>
+          </select> 
+          <input type="submit" value="Submit">
           <closeform></closeform>
           <input type="submit" class="w-1/2 mt-5" value="Submit" />
         </form>
       </div>
     </div>
     <div class="sidebar close">
-      <!-- logo starts here -->
-      <div class="logo-details">
-        <img src="../assets/logo.png" alt="" class="pl-2" />
-      </div>
-      <!-- logo stops here -->
       <ul class="nav-links">
         <li>
           <div class="icon-link">
@@ -79,9 +81,9 @@
           </div>
           <ul class="sub-menu">
             <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.html">Employee</a></li>
-            <li><a href="./human_resources.html">Human Resource</a></li>
-            <li><a href="./manager.html">Manager</a></li>
+            <li><a href="./employee.php">Employee</a></li>
+            <li><a href="./human_resources.php">Human Resource</a></li>
+            <li><a href="./manager.php">Manager</a></li>
           </ul>
         </li>
 
@@ -109,21 +111,35 @@
           <div class="profile-details">
             <div class="profile-content"></div>
             <div class="name-job">
+              <div class="profile_name">LOG OUT</div>
+            </div>
+            <i class="bx bx-log-out"></i>
+          </div>
+        </li>
+      </ul>
+
+      <li>
+          <div class="profile-details">
+            <div class="profile-content"></div>
+            <div class="name-job">
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="#"><i class="bx bx-log-out"></i></a>
+            <a href="../php/logout.php"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
       </ul>
+    </div>
     </div>
 
     <section class="home-section p-6">
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">WELCOME, User</h1>
+            <?php
+             echo "<h1 class=font-semibold text-3xl>WELCOME," .htmlspecialchars($_SESSION['username']) . "</h1>";
+            ?>
           </div>
           <div class="flex right-0 space-x-4 w-1/2">
             <button class="add-employee" id="modal-btn">
