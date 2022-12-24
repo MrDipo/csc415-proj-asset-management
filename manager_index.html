@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="./Auth/styles.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- change starts here -->
+      <div
+        style="
+          display: flex;
+          justify-content: space-evenly;
+          padding-bottom: 8px;
+        "
+      >
+        <img
+          src="./assets/logo2.png"
+          alt=""
+          width="50"
+          height="50"
+          style="border-radius: 10px; padding-right: 5px"
+        />
+        <h2 style="padding-bottom: 6px; margin-right: 35px">Manager Sign in</h2>
+      </div>
+      <!-- change ends here -->
+
+      <form method="POST" action="php/manager_login.php">
+        <input type="email" name="email" placeholder="Enter Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <closeform></closeform>
+        <input type="submit" name="submit" value="Sign in" />
+      </form>
+    </div>
+  </body>
+</html>
