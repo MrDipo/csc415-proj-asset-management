@@ -221,3 +221,15 @@ table thead tr{
   color: #fff;
   transition: 0.5rem;
 }
+input[type="submit"]{
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #11101d;
+}
+input[type='submit']:hover{
+  background: #11101d;
+  color: #fff;
+  transition: 0.5rem;
+}
