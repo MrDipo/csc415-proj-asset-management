@@ -1,17 +1,4 @@
 <!DOCTYPE html>
-<?php
-require "../php/check_login.php";
-require "../php/employee.php";
-require "../php/logout.php";
-
-if(isset($_POST['submit'])){
-  $emp_id = $_POST['emp_id'];
-  $asset = $_POST['select'];
-  $emp_id = mysqli_real_escape_string($conn, $emp_id);
-  $asset = mysqli_real_escape_string($conn, $asset);
-  create_request($emp_id, $asset, $conn);
-}
-?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />

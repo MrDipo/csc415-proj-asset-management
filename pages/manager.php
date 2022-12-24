@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<?php
-  require "../php/check_login.php";
-  require "../php/manager.php";
-  require "../php/common_hr_manager.php";
-
-?>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
