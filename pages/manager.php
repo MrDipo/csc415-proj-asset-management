@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
   session_start();
-  require "../php/manager.php";
   require "../php/common.php";
 ?>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
