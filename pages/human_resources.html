@@ -36,11 +36,46 @@
           <input type="email" placeholder="Enter Email" />
           <input type="text" placeholder="Enter Phone" />
           <input type="text" placeholder="Enter Role" />
-          <input type="text" placeholder="Employment_type" />
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="full-time">Full-Time</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="add-employee"
+              value="full-time"
+            />
+          </div>
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="part-time">Part-Time</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="add-employee"
+              value="part-time"
+            />
+          </div>
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="intern">Intern</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="add-employee"
+              value="intern"
+            />
+          </div>
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="contract">Contract</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="add-employee"
+              value="contract"
+            />
+          </div>
 
           <closeform></closeform>
+          <input type="submit" value="Submit" class="w-1/2 mt-5" />
         </form>
-        <button class="add-employee w-1/2 mt-5">Submit</button>
       </div>
     </div>
     <div class="sidebar close">
@@ -122,42 +157,36 @@
 
           <section class="attendance">
             <div class="attendance-list">
-              <h1>Employee List</h1>
+              <h1>Employee Request</h1>
               <table class="table">
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Department</th>
-                    <th>Equipment</th>
+                    <th>Assets</th>
                     <th>Request Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>01</td>
                     <td>Sam David</td>
                     <td>Design</td>
-
                     <td>Laptop</td>
                     <td>Approved</td>
                   </tr>
                   <tr>
-                    <td>02</td>
                     <td>Balbina Kherr</td>
                     <td>Coding</td>
                     <td>Monitor</td>
                     <td>Pending</td>
                   </tr>
                   <tr>
-                    <td>03</td>
                     <td>Badan John</td>
                     <td>testing</td>
                     <td>Printer</td>
                     <td>Declined</td>
                   </tr>
                   <tr>
-                    <td>04</td>
                     <td>Sara David</td>
                     <td>Design</td>
                     <td>Printer</td>
