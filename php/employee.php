@@ -7,18 +7,23 @@ function create_request($employee_id, $asset_name, $conn){
     FROM request r
     JOIN employee e ON r.employee_id = e.id
     JOIN asset a ON r.asset_id = a.id
-    WHERE e.id = '$employee_id' AND a.name = '$asset_name';";
-    $check_query_result = mysqli_query($conn, $check_query);
+    WHERE e.id = ? AND a.name = ?;";
+    $stmt = $conn->prepare($check_query);
+    $stmt->bind_param("is", $employee_id, $asset_name);
+    $stmt->execute();
+    $check_query_result = $stmt->get_result();
     if (mysqli_num_rows($check_query_result)==1){
         return False;
     }
     $query = "INSERT INTO request (employee_id, asset_id)
     SELECT e.id, a.id
     FROM employee e
-    JOIN asset a ON a.name = '$asset_name'
-    WHERE e.id = '$employee_id';";
-    $result = mysqli_query($conn, $query);
-    return $result;
+    JOIN asset a ON a.name = ?
+    WHERE e.id = ?;";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("si", $asset_name, $employee_id);
+    $stmt->execute();
+    return $stmt->get_result();
 }
 
 # returns an assoc array of all requests made by this employee
@@ -27,8 +32,7 @@ function view_made_requests($employee_id, $conn){
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $employee_id);
     $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
+    return $stmt->get_result();
 }
 
 # returns an assoc array of all assets belonging to this employee
@@ -38,7 +42,6 @@ function view_assigned_assets($employee_id, $conn){
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $employee_id);
     $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
+    return $stmt->get_result();
 }
 ?>
