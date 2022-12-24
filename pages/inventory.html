@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<?php
-  require "../php/check_login.php";
-  require "../php/employee.php";
-?>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
@@ -19,6 +16,11 @@
   </head>
   <body>
     <div class="sidebar close">
+      <!-- logo starts here -->
+      <div class="logo-details">
+        <img src="../assets/logo.png" alt="" class="pl-2" />
+      </div>
+      <!-- logo stops here -->
       <ul class="nav-links">
         <li>
           <div class="icon-link">
@@ -40,9 +42,9 @@
           </div>
           <ul class="sub-menu">
             <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.php">Employee</a></li>
-            <li><a href="./human_resources.php">Human Resource</a></li>
-            <li><a href="./manager.php">Manager</a></li>
+            <li><a href="./employee.html">Employee</a></li>
+            <li><a href="./human_resources.html">Human Resource</a></li>
+            <li><a href="./manager.html">Manager</a></li>
           </ul>
         </li>
 
@@ -73,7 +75,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="../php/logout.php"><i class="bx bx-log-out"></i></a>
+            <a href="#"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -84,7 +86,7 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">Assets Assigned</h1>
+            <h1 class="font-semibold text-3xl">Asset Inventory</h1>
             <i class="fas fa-user-cog"></i>
           </div>
 
@@ -94,34 +96,32 @@
               <table class="table">
                 <thead>
                   <tr>
+                    <th>ID</th>
                     <th>Name of Asset</th>
                     <th>Type</th>
                     <th>Description</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                $user = $_SESSION['username'];
-                $query = "SELECT id FROM employee WHERE employee_name = ?;";
-                $stmt = $conn->prepare($query); 
-                $stmt->bind_param("s", $user);
-                $stmt->execute();
-                $required = $stmt->get_result();
-                $temp = $required->fetch_assoc();
-                $request_result = view_assigned_assets($temp['id'], $conn);
-                while($rows=$row->fetch_assoc())
-                {
-                ?>
-                <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
-                  <td><?php echo $rows['asset_name'];?></td>
-                  <td><?php echo $rows['type'];?></td>
-                  <td><?php echo $rows['description'];?></td>
-                </tr>
-                <?php
-                }
-                ?>
+                  <tr>
+                    <td>01</td>
+                    <td>Laptop</td>
+                    <td>Technology</td>
+                    <td>lorem ipsum</td>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>Printer</td>
+                    <td>Technology</td>
+                    <td>lorem ipsum</td>
+                  </tr>
+
+                  <tr>
+                    <td>03</td>
+                    <td>Desk</td>
+                    <td>Furniture</td>
+                    <td>lorem ipsum</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
