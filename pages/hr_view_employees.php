@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-
+<?php
+  session_start();
+  require "../php/hr.php";
+  $result = get_all_employees($conn);
+?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +22,7 @@
     <div class="sidebar close">
       <!-- logo starts here -->
       <div class="logo-details">
-        <img src="../assets/logo.png" alt="" class="pl-2" />
+        <img src="../emo$employees/logo.png" alt="" class="pl-2" />
       </div>
       <!-- logo stops here -->
       <ul class="nav-links">
@@ -34,7 +38,7 @@
         </li>
         <li>
           <div class="iocn-link">
-            <a href="#">
+            <a href="human_resources.php">
               <i class="bx bx-collection"></i>
               <span class="link_name">Dashboard</span>
             </a>
@@ -42,29 +46,27 @@
           </div>
           <ul class="sub-menu">
             <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.html">Employee</a></li>
-            <li><a href="./human_resources.html">Human Resource</a></li>
-            <li><a href="./manager.html">Manager</a></li>
+            <li><a href="./human_resources.php">Human Resources</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="./inventory.html">
+          <a href="./hr_view_assigned_assets.php">
             <i class="bx bx-pie-chart-alt-2"></i>
-            <span class="link_name">Inventory</span>
+            <span class="link_name">Assigned Assets</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./inventory.html">Inventory</a></li>
+            <li><a class="link_name" href="./hr_view_assigned_assets.php">Assigned Assets</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="./request.html">
+          <a href="./hr_view_employees.php">
             <i class="bx bx-compass"></i>
-            <span class="link_name">Requests</span>
+            <span class="link_name">Employees</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./request.html">Requests</a></li>
+            <li><a class="link_name" href="./hr_view_employees.php">Employees</a></li>
           </ul>
         </li>
 
@@ -75,7 +77,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="#"><i class="bx bx-log-out"></i></a>
+            <a href="../php/hr_logout.php"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -86,7 +88,7 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">My Request</h1>
+            <h1 class="font-semibold text-3xl">Employee List</h1>
             <i class="fas fa-user-cog"></i>
           </div>
 
@@ -96,31 +98,27 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Assets</th>
-                    <th>Date Created</th>
-                    <th>Date Resolved</th>
-                    <th>Request Status</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Employment Type</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Laptop</td>
-                    <td>03-24-22</td>
-                    <td>04-24-22</td>
-                    <td>Approved</td>
-                  </tr>
-                  <tr>
-                    <td>Monitor</td>
-                    <td>03-24-22</td>
-                    <td>04-24-22</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>Printer</td>
-                    <td>03-24-22</td>
-                    <td>04-24-22</td>
-                    <td>Declined</td>
-                  </tr>
+                <?php while($employees = mysqli_fetch_assoc($result)){
+                    echo "<tr>";
+                    echo "<td>" . $employees["employee_id"]. "</td>";
+                    echo "<td>" . $employees["employee_name"]. "</td>";
+                    echo "<td>" . $employees["address"]. "</td>";
+                    echo "<td>" . $employees["phone"]. "</td>";
+                    echo "<td>" . $employees["email"]. "</td>";
+                    echo "<td>" . $employees["role"]. "</td>";
+                    echo "<td>" . $employees["employment_type"]. "</td>";
+                    echo "</tr>";
+                  } ?>
                 </tbody>
               </table>
             </div>

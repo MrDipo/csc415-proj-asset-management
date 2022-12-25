@@ -1,9 +1,14 @@
 Employee sample:
     Email: logan@live.company.com
     Password: 56SBtj3pQ7
+    
 HR Account:
     Email: hr@live.company.com
     Password: super
 Manager:
     Email: manager@live.company.com
     Password: rootsuper
+
+          <?php
+             echo "<h1 class=font-semibold text-3xl>WELCOME," .htmlspecialchars($_SESSION['username']) . "</h1>";
+            ?>

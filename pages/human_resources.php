@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <?php
   session_start();
-  require "../php/common.php";
-  require "../php/manager.php";
-  $result = view_all_redirected_requests($conn);
+  require "../php/hr.php";
+  $result = view_all_pending_requests($conn);
 ?>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/style2.css" />
+    <link rel="stylesheet" href="../styles//style2.css" />
+    <link rel="stylesheet" href="modal.css" />
     <!-- Boxiocns CDN Link -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -21,6 +20,69 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
+    <!-- modal -->
+    <div id="my-modal" class="modal">
+      <span class="close bg-red-500 rounded-md py-1 px-2">&times;</span>
+
+      <!-- Font Awesome Cdn Link -->
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      />
+
+      <div class="wrapper">
+        <h1 class="pb-6 font-light text-2xl">Add Employee</h1>
+
+        <form method="POST" action="../php/hr.php">
+        <input type="text" name="department" placeholder="Enter department" />
+          <input type="text" name="employee_name" placeholder="Enter name" />
+          <input type="text" name="address" placeholder="Address" />
+          <input type="text" name="phone" placeholder="Enter Phone" />
+          <input type="email" name="email" placeholder="Enter Email" />
+          <input type="text" name="password" placeholder="Password" />
+          <input type="text" name="role" placeholder="Enter Role" />
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="full-time">Full-Time</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="employment_type"
+              value="full-time"
+            />
+          </div>
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="part-time">Part-Time</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="employment_type"
+              value="part-time"
+            />
+          </div>
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="intern">Intern</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="employment_type"
+              value="intern"
+            />
+          </div>
+          <div class="flex w-1/2 justify-content ml-7">
+            <label for="contract">Contract</label>
+            <input
+              class="w-10 mt-1"
+              type="radio"
+              name="employment_type"
+              value="contract"
+            />
+          </div>
+
+          <closeform></closeform>
+          <input type="submit" name="submit" value="Submit" class="w-1/2 mt-5" />
+        </form>
+      </div>
+    </div>
     <div class="sidebar close">
       <!-- logo starts here -->
       <div class="logo-details">
@@ -34,10 +96,6 @@
           </div>
         </li>
         <li>
-          <!-- <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="link_name">Dashboard</span>
-          </a> -->
           <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Dashboard</a></li>
           </ul>
@@ -52,29 +110,27 @@
           </div>
           <ul class="sub-menu">
             <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.html">Employee</a></li>
-            <li><a href="./human_resources.html">Human Resource</a></li>
-            <li><a href="./manager.html">Manager</a></li>
+            <li><a href="./human_resources.php">Human Resource</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="./inventory.html">
+          <a href="./hr_view_assigned_assets.php">
             <i class="bx bx-pie-chart-alt-2"></i>
-            <span class="link_name">Inventory</span>
+            <span class="link_name">Assigned Assets</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./inventory.html">Inventory</a></li>
+            <li><a class="link_name" href="./hr_view_assigned_assets.php">Assigned Assets</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="./request.html">
+          <a href="./hr_view_employees.php">
             <i class="bx bx-compass"></i>
-            <span class="link_name">Requests</span>
+            <span class="link_name">Employees</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./request.html">Requests</a></li>
+            <li><a class="link_name" href="./hr_view_employees.php">Employees</a></li>
           </ul>
         </li>
 
@@ -85,7 +141,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="../php/manager_logout.php"><i class="bx bx-log-out"></i></a>
+            <a href="../php/hr_logout.php"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -96,13 +152,17 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">Manager</h1>
-            <i class="fas fa-user-cog"></i>
+            <h1 class="font-semibold text-3xl">Human Resources</h1>
+          </div>
+          <div class="right-0 w-1/4 mt-5">
+            <button class="employment_type" id="modal-btn">Add employee</button>
+            <button class="employment_type" id="modal-btn"><a href="./hr_view_assigned_assets.php">View Assigned Assets</a></button>
+            <button class="employment_type" id="modal-btn"><a href="./hr_view_employees.php">View All Employees</a></button>
           </div>
 
           <section class="attendance">
             <div class="attendance-list">
-              <h1>Employee Request</h1>
+              <h1>Pending Employee Requests</h1>
               <table class="table">
                 <thead>
                   <tr>
@@ -111,28 +171,21 @@
                     <th>Date Created</th>
                     <th>Date Resolved</th>
                     <th>Assets</th>
-                    <th>Request Status</th>
-                    <th></th>
-                    <th></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php while($requests = mysqli_fetch_assoc($result)){
+                <?php while($requests = mysqli_fetch_assoc($result)){
                     echo "<tr>";
                     echo "<td>" . $requests["employee_name"]. "</td>";
                     echo "<td>" . $requests["department_name"]. "</td>";
                     echo "<td>" . $requests["date_created"]. "</td>";
                     echo "<td>" . $requests["date_resolved"]. "</td>";
                     echo "<td>" . $requests["asset_name"]. "</td>";
-                    echo "<td>" . $requests["status"]. "</td>";
-                    echo '<form action="../php/manager.php" method="post">';
+                    echo '<form action="../php/redirect_request.php" method="post">';
                     echo '<input type="hidden" name="asset_id" value="'.$requests["asset_id"].'">';
                     echo '<input type="hidden" name="emp_id" value="'.$requests["employee_id"].'">';
-                    if ($requests["status"]=="requested"){
-                      echo '<td><input type="submit" name="action" value="Approve" /></td>';
-                      echo '<td><input type="submit" name="action" value="Reject" /></td>';
-                    }
+                    echo '<td><input type="submit" name="submit" value="Redirect" /></td>';
                     echo '</form>';
                     echo "</tr>";
                   } ?>
@@ -158,5 +211,6 @@
         sidebar.classList.toggle("close");
       });
     </script>
+    <script src="./modal.js"></script>
   </body>
 </html>

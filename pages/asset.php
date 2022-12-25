@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-
+<?php
+  session_start();
+  require "../php/employee.php";
+  $result = view_assigned_assets($_SESSION['data']['employee_id'],$conn);
+?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
@@ -42,29 +46,27 @@
           </div>
           <ul class="sub-menu">
             <li><a class="link_name" href="#">Dashboard</a></li>
-            <li><a href="./employee.html">Employee</a></li>
-            <li><a href="./human_resources.html">Human Resource</a></li>
-            <li><a href="./manager.html">Manager</a></li>
+            <li><a href="./employee.php">Employee</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="./inventory.html">
+          <a href="./asset.php">
             <i class="bx bx-pie-chart-alt-2"></i>
-            <span class="link_name">Inventory</span>
+            <span class="link_name">Assets</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./inventory.html">Inventory</a></li>
+            <li><a class="link_name" href="./asset.php">Assets</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="./request.html">
+          <a href="./request.php">
             <i class="bx bx-compass"></i>
             <span class="link_name">Requests</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="./request.html">Requests</a></li>
+            <li><a class="link_name" href="./request.php">Requests</a></li>
           </ul>
         </li>
 
@@ -75,7 +77,7 @@
               <!-- changes start here -->
               <div class="profile_name pl-6">LOG OUT</div>
             </div>
-            <a href="#"><i class="bx bx-log-out"></i></a>
+            <a href="../php/employee_logout.php"><i class="bx bx-log-out"></i></a>
             <!-- changes stop here -->
           </div>
         </li>
@@ -86,7 +88,7 @@
       <div class="container">
         <section class="main">
           <div class="main-top">
-            <h1 class="font-semibold text-3xl">Asset Inventory</h1>
+            <h1 class="font-semibold text-3xl">My Assets</h1>
             <i class="fas fa-user-cog"></i>
           </div>
 
@@ -103,25 +105,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>01</td>
-                    <td>Laptop</td>
-                    <td>Technology</td>
-                    <td>lorem ipsum</td>
-                  </tr>
-                  <tr>
-                    <td>02</td>
-                    <td>Printer</td>
-                    <td>Technology</td>
-                    <td>lorem ipsum</td>
-                  </tr>
-
-                  <tr>
-                    <td>03</td>
-                    <td>Desk</td>
-                    <td>Furniture</td>
-                    <td>lorem ipsum</td>
-                  </tr>
+                <?php
+                  while($assets = mysqli_fetch_assoc($result)){
+                    echo "<tr>";
+                    echo "<td>" . $assets["asset_id"]. "</td>";
+                    echo "<td>" . $assets["asset_name"]. "</td>";
+                    echo "<td>" . $assets["type"]. "</td>";
+                    echo "<td>" . $assets["asset_description"]. "</td>";
+                    echo "</tr>";
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
