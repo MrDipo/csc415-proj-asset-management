@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
   session_start();
-  require "../php/common.php";
   require "../php/manager.php";
   $result = view_all_redirected_requests($conn);
 ?>
