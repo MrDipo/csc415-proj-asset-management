@@ -53,42 +53,15 @@ function create_employee($department_id, $name, $address, $phone, $email, $passw
     $result = $stmt->get_result();
     return $result;
 }
- 
-function update_employee($employee_id, $department_id, $name, $address, $phone, $email, $password, $role, $employment_type, $conn){
+
+function update_employee($employee_id, $name, $address, $phone, $email, $role, $employment_type, $conn){
     $query = "UPDATE employee
-    SET department_id = CASE 
-        WHEN department_id = department_id THEN department_id
-        ELSE '$department_id'
-    END,
-    name = CASE 
-        WHEN name = name THEN name
-        ELSE '$name'
-    END,
-    address = CASE 
-        WHEN address = address THEN address
-        ELSE '$address'
-    END,
-    phone = CASE 
-        WHEN phone = phone THEN phone
-        ELSE '$phone'
-    END,
-    email = CASE 
-        WHEN email = email THEN email
-        ELSE '$email'
-    END,
-    password = CASE 
-        WHEN password = password THEN password
-        ELSE '$password'
-    END,
-    role = CASE 
-        WHEN role = role THEN role
-        ELSE '$role'
-    END,
-    employment_type = CASE 
-        WHEN employment_type = employment_type THEN employment_type
-        ELSE '$employment_type'
-    END,
-    WHERE id = '$employee_id';";
+    SET employee_name='$name',
+    address='$address',
+    phone='$phone',
+    email='$email',
+    role='$role',
+    employment_type='$employment_type' WHERE employee_id = '$employee_id'";
     $result = mysqli_query($conn, $query);
     return $result;
 }
