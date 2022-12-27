@@ -163,6 +163,7 @@
           <section class="attendance">
             <div class="attendance-list">
               <h1>Pending Employee Requests</h1>
+              <?php if (mysqli_num_rows($result) == 0) {echo "<p>(No pending requests at this time)</p>";} ?>
               <table class="table">
                 <thead>
                   <tr>
