@@ -129,6 +129,7 @@
             
           </div>
           <div class="flex right-0 space-x-4 w-1/2">
+          <?php echo "<h1 class=font-semibold text-3xl>WELCOME," .htmlspecialchars($_SESSION['username']) . "</h1>"; ?>
             <button class="add-employee" id="modal-btn">
               <a href="#"> Create Request</a>
             </button>
