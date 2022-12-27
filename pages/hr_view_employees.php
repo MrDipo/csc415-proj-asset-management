@@ -105,6 +105,7 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Employment Type</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -117,6 +118,15 @@
                     echo "<td>" . $employees["email"]. "</td>";
                     echo "<td>" . $employees["role"]. "</td>";
                     echo "<td>" . $employees["employment_type"]. "</td>";
+                    echo '<form action="" method="post">';
+                    echo '<input type="hidden" name="emp_id" value="'.$employees["employee_id"].'">';
+                    echo '<input type="hidden" name="emp_name" value="'.$employees["employee_name"].'">';
+                    echo '<input type="hidden" name="address" value="'.$employees["address"].'">';
+                    echo '<input type="hidden" name="phone" value="'.$employees["phone"].'">';
+                    echo '<input type="hidden" name="email" value="'.$employees["email"].'">';
+                    echo '<input type="hidden" name="role" value="'.$employees["role"].'">';
+                    echo '<td><input type="submit" name="action" value="Update" /></td>'; # does not work
+                    echo '</form>';
                     echo "</tr>";
                   } ?>
                 </tbody>
