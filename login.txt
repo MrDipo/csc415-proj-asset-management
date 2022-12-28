@@ -1,6 +1,3 @@
-Employee sample:
-    Email: logan@live.company.com
-    Password: 56SBtj3pQ7
 HR Account:
     Email: hr@live.company.com
     Password: super
